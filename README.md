@@ -63,3 +63,7 @@ Inicialmente atribui-se à saídao bit referente ao byte que deve ser enviado, o
 
 STOP BIT:
 Inicialmente, atribui-se nível lógico alto à saída, o qual representa o Stop Bit. Posteriormente, o valor de um registrador que funciona como um contador é comparado com o valor do parâmetro Clock por bit definido anteriormente. Se o contador for diferente da quantidade de clocks por bits, ele é incrementado em um até que essa igualdade ocorra. Posteriormente, quando o contador estiver alcançado o valor exato do clock por bit definido, atribui-se um nível lógico alto para o registrador Done (que irá representar que o a transmissão do byte está completa), o contador pode ser resetado e a máquina pode seguir novamente para o estado IDLE.
+
+## Interface com o usuário
+
+Foi feito um código em C para comunicar o SBC com a FPGA. Nesse código, bibliotecas em assembly desenvolvidas no problema 1 do MI sao utlizadas para configurar a UART do SBC. Depois, o usuário pode inserir um número através da função scanf(). Finamente, o comando é guardado e enviado e transmitido através de outra biblioteca assembly, e uma resposta é recebida e guardada.
