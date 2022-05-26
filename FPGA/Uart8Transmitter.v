@@ -6,7 +6,7 @@ module Uart8Transmitter (
     output reg        done,  // end on transaction
     output reg        busy   // transaction is in process
 );
-    reg [2:0] RESET = 3'b001;
+     reg [2:0] RESET = 3'b001;
 	 reg [2:0] IDLE = 3'b010;
 	 reg [2:0] START_BIT = 3'b011;
 	 reg [2:0] DATA_BITS = 3'b100;
