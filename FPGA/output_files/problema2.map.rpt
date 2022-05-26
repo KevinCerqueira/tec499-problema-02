@@ -1,0 +1,726 @@
+Analysis & Synthesis report for problema2
+Wed May 25 15:14:05 2022
+Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. State Machine - |uart_main2|uart_state
+  9. State Machine - |uart_main2|Uart8Transmitter:comb_3|state
+ 10. State Machine - |uart_main2|dht11:dht11_0|state
+ 11. State Machine - |uart_main2|sensor_controller:sensor_controller_0|state
+ 12. State Machine - |uart_main2|Uart8Receiver:rx|state
+ 13. Registers Removed During Synthesis
+ 14. Removed Registers Triggering Further Register Optimizations
+ 15. General Register Statistics
+ 16. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 17. Parameter Settings for User Entity Instance: clock_divider:divider_0
+ 18. Parameter Settings for User Entity Instance: sensor_controller:sensor_controller_0
+ 19. Parameter Settings for User Entity Instance: clock_divider1mhz:divider_1
+ 20. Parameter Settings for User Entity Instance: dht11:dht11_0
+ 21. Port Connectivity Checks: "Uart8Transmitter:comb_3"
+ 22. Port Connectivity Checks: "dht11:dht11_0"
+ 23. Port Connectivity Checks: "sensor_controller:sensor_controller_0"
+ 24. Port Connectivity Checks: "Uart8Receiver:rx"
+ 25. Port Connectivity Checks: "baud_gen:baud_gen"
+ 26. Post-Synthesis Netlist Statistics for Top Partition
+ 27. Elapsed Time Per Partition
+ 28. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2020  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++----------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                     ;
++------------------------------------+---------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Wed May 25 15:14:05 2022       ;
+; Quartus Prime Version              ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
+; Revision Name                      ; problema2                                   ;
+; Top-level Entity Name              ; uart_main2                                  ;
+; Family                             ; Cyclone IV E                                ;
+; Total logic elements               ; 101                                         ;
+;     Total combinational functions  ; 98                                          ;
+;     Dedicated logic registers      ; 48                                          ;
+; Total registers                    ; 48                                          ;
+; Total pins                         ; 7                                           ;
+; Total virtual pins                 ; 0                                           ;
+; Total memory bits                  ; 0                                           ;
+; Embedded Multiplier 9-bit elements ; 0                                           ;
+; Total PLLs                         ; 0                                           ;
++------------------------------------+---------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                              ;
++------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                           ; Setting            ; Default Value      ;
++------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                           ; EP4CE30F23A7       ;                    ;
+; Top-level entity name                                            ; uart_main2         ; problema2          ;
+; Family name                                                      ; Cyclone IV E       ; Cyclone V          ;
+; Use smart compilation                                            ; Off                ; Off                ;
+; Enable parallel Assembler and Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                      ; Off                ; Off                ;
+; Restructure Multiplexers                                         ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                              ; Off                ; Off                ;
+; Preserve fewer node names                                        ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                    ; Enable             ; Enable             ;
+; Verilog Version                                                  ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                     ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                         ; Auto               ; Auto               ;
+; Safe State Machine                                               ; Off                ; Off                ;
+; Extract Verilog State Machines                                   ; On                 ; On                 ;
+; Extract VHDL State Machines                                      ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                       ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                   ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                          ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                        ; On                 ; On                 ;
+; Parallel Synthesis                                               ; On                 ; On                 ;
+; DSP Block Balancing                                              ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                               ; On                 ; On                 ;
+; Power-Up Don't Care                                              ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                     ; Off                ; Off                ;
+; Remove Duplicate Registers                                       ; On                 ; On                 ;
+; Ignore CARRY Buffers                                             ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                           ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                            ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                        ; Off                ; Off                ;
+; Ignore LCELL Buffers                                             ; Off                ; Off                ;
+; Ignore SOFT Buffers                                              ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                   ; Off                ; Off                ;
+; Optimization Technique                                           ; Balanced           ; Balanced           ;
+; Carry Chain Length                                               ; 70                 ; 70                 ;
+; Auto Carry Chains                                                ; On                 ; On                 ;
+; Auto Open-Drain Pins                                             ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                            ; Off                ; Off                ;
+; Auto ROM Replacement                                             ; On                 ; On                 ;
+; Auto RAM Replacement                                             ; On                 ; On                 ;
+; Auto DSP Block Replacement                                       ; On                 ; On                 ;
+; Auto Shift Register Replacement                                  ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                  ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                    ; On                 ; On                 ;
+; Strict RAM Replacement                                           ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                           ; Off                ; Off                ;
+; Auto RAM Block Balancing                                         ; On                 ; On                 ;
+; Auto RAM to Logic Cell Conversion                                ; Off                ; Off                ;
+; Auto Resource Sharing                                            ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                               ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                               ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                    ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing              ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                ; Off                ; Off                ;
+; Timing-Driven Synthesis                                          ; On                 ; On                 ;
+; Report Parameter Settings                                        ; On                 ; On                 ;
+; Report Source Assignments                                        ; On                 ; On                 ;
+; Report Connectivity Checks                                       ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                               ; Off                ; Off                ;
+; Synchronization Register Chain Length                            ; 2                  ; 2                  ;
+; Power Optimization During Synthesis                              ; Normal compilation ; Normal compilation ;
+; HDL message level                                                ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                  ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report         ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report               ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report        ; 100                ; 100                ;
+; Clock MUX Protection                                             ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                      ; Off                ; Off                ;
+; Block Design Naming                                              ; Auto               ; Auto               ;
+; SDC constraint protection                                        ; Off                ; Off                ;
+; Synthesis Effort                                                 ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal     ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                             ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                               ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                      ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                           ; On                 ; On                 ;
++------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 6           ;
+; Maximum allowed            ; 6           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 6           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;   0.0%      ;
+;     Processors 3-6         ;   0.0%      ;
++----------------------------+-------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                ;
++----------------------------------+-----------------+------------------------+---------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                                  ; Library ;
++----------------------------------+-----------------+------------------------+---------------------------------------------------------------+---------+
+; baud_gen.v                       ; yes             ; User Verilog HDL File  ; /home/aluno/Documentos/TEC499/TP02/G02/p2/baud_gen.v          ;         ;
+; Uart8Transmitter.v               ; yes             ; User Verilog HDL File  ; /home/aluno/Documentos/TEC499/TP02/G02/p2/Uart8Transmitter.v  ;         ;
+; Uart8Receiver.v                  ; yes             ; User Verilog HDL File  ; /home/aluno/Documentos/TEC499/TP02/G02/p2/Uart8Receiver.v     ;         ;
+; uart_main2.v                     ; yes             ; User Verilog HDL File  ; /home/aluno/Documentos/TEC499/TP02/G02/p2/uart_main2.v        ;         ;
+; dht11.v                          ; yes             ; User Verilog HDL File  ; /home/aluno/Documentos/TEC499/TP02/G02/p2/dht11.v             ;         ;
+; sensor_controller.v              ; yes             ; User Verilog HDL File  ; /home/aluno/Documentos/TEC499/TP02/G02/p2/sensor_controller.v ;         ;
+; clock_divider.v                  ; yes             ; User Verilog HDL File  ; /home/aluno/Documentos/TEC499/TP02/G02/p2/clock_divider.v     ;         ;
+; clock_divider1mhz.v              ; yes             ; User Verilog HDL File  ; /home/aluno/Documentos/TEC499/TP02/G02/p2/clock_divider1mhz.v ;         ;
++----------------------------------+-----------------+------------------------+---------------------------------------------------------------+---------+
+
+
++-------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                             ;
++---------------------------------------------+---------------------------+
+; Resource                                    ; Usage                     ;
++---------------------------------------------+---------------------------+
+; Estimated Total logic elements              ; 101                       ;
+;                                             ;                           ;
+; Total combinational functions               ; 98                        ;
+; Logic element usage by number of LUT inputs ;                           ;
+;     -- 4 input functions                    ; 54                        ;
+;     -- 3 input functions                    ; 18                        ;
+;     -- <=2 input functions                  ; 26                        ;
+;                                             ;                           ;
+; Logic elements by mode                      ;                           ;
+;     -- normal mode                          ; 87                        ;
+;     -- arithmetic mode                      ; 11                        ;
+;                                             ;                           ;
+; Total registers                             ; 48                        ;
+;     -- Dedicated logic registers            ; 48                        ;
+;     -- I/O registers                        ; 0                         ;
+;                                             ;                           ;
+; I/O pins                                    ; 7                         ;
+;                                             ;                           ;
+; Embedded Multiplier 9-bit elements          ; 0                         ;
+;                                             ;                           ;
+; Maximum fan-out node                        ; baud_gen:baud_gen|clk_out ;
+; Maximum fan-out                             ; 36                        ;
+; Total fan-out                               ; 447                       ;
+; Average fan-out                             ; 2.78                      ;
++---------------------------------------------+---------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                             ;
++------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------+------------------+--------------+
+; Compilation Hierarchy Node   ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                 ; Entity Name      ; Library Name ;
++------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------+------------------+--------------+
+; |uart_main2                  ; 98 (18)             ; 48 (11)                   ; 0           ; 0            ; 0       ; 0         ; 7    ; 0            ; |uart_main2                         ; uart_main2       ; work         ;
+;    |Uart8Receiver:rx|        ; 47 (47)             ; 14 (14)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |uart_main2|Uart8Receiver:rx        ; Uart8Receiver    ; work         ;
+;    |Uart8Transmitter:comb_3| ; 14 (14)             ; 10 (10)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |uart_main2|Uart8Transmitter:comb_3 ; Uart8Transmitter ; work         ;
+;    |baud_gen:baud_gen|       ; 19 (19)             ; 13 (13)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |uart_main2|baud_gen:baud_gen       ; baud_gen         ; work         ;
++------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------+------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
+Encoding Type:  One-Hot
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |uart_main2|uart_state                                                                                                                                  ;
++----------------------------+------------------+----------------------------+----------------------------+----------------------+----------------------+-----------------+
+; Name                       ; uart_state.RESET ; uart_state.TRANSMITTING_P2 ; uart_state.TRANSMITTING_P1 ; uart_state.MEASURING ; uart_state.RECEIVING ; uart_state.IDLE ;
++----------------------------+------------------+----------------------------+----------------------------+----------------------+----------------------+-----------------+
+; uart_state.IDLE            ; 0                ; 0                          ; 0                          ; 0                    ; 0                    ; 0               ;
+; uart_state.RECEIVING       ; 0                ; 0                          ; 0                          ; 0                    ; 1                    ; 1               ;
+; uart_state.MEASURING       ; 0                ; 0                          ; 0                          ; 1                    ; 0                    ; 1               ;
+; uart_state.TRANSMITTING_P1 ; 0                ; 0                          ; 1                          ; 0                    ; 0                    ; 1               ;
+; uart_state.TRANSMITTING_P2 ; 0                ; 1                          ; 0                          ; 0                    ; 0                    ; 1               ;
+; uart_state.RESET           ; 1                ; 0                          ; 0                          ; 0                    ; 0                    ; 1               ;
++----------------------------+------------------+----------------------------+----------------------------+----------------------+----------------------+-----------------+
+
+
+Encoding Type:  One-Hot
++-----------------------------------------------------------------------+
+; State Machine - |uart_main2|Uart8Transmitter:comb_3|state             ;
++-----------+-----------+-----------+-----------+-----------+-----------+
+; Name      ; state.101 ; state.100 ; state.011 ; state.010 ; state.001 ;
++-----------+-----------+-----------+-----------+-----------+-----------+
+; state.001 ; 0         ; 0         ; 0         ; 0         ; 0         ;
+; state.010 ; 0         ; 0         ; 0         ; 1         ; 1         ;
+; state.011 ; 0         ; 0         ; 1         ; 0         ; 1         ;
+; state.100 ; 0         ; 1         ; 0         ; 0         ; 1         ;
+; state.101 ; 1         ; 0         ; 0         ; 0         ; 1         ;
++-----------+-----------+-----------+-----------+-----------+-----------+
+
+
+Encoding Type:  One-Hot
++----------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |uart_main2|dht11:dht11_0|state                                                                                                    ;
++----------------+------------+------------+--------------+--------------+----------------+---------------+---------------+------------+-------------+
+; Name           ; state.STOP ; state.DATA ; state.SYNC_1 ; state.SYNC_0 ; state.RESPONCE ; state.START_1 ; state.START_0 ; state.IDLE ; state.ERROR ;
++----------------+------------+------------+--------------+--------------+----------------+---------------+---------------+------------+-------------+
+; state.IDLE     ; 0          ; 0          ; 0            ; 0            ; 0              ; 0             ; 0             ; 0          ; 0           ;
+; state.START_0  ; 0          ; 0          ; 0            ; 0            ; 0              ; 0             ; 1             ; 1          ; 0           ;
+; state.START_1  ; 0          ; 0          ; 0            ; 0            ; 0              ; 1             ; 0             ; 1          ; 0           ;
+; state.RESPONCE ; 0          ; 0          ; 0            ; 0            ; 1              ; 0             ; 0             ; 1          ; 0           ;
+; state.SYNC_0   ; 0          ; 0          ; 0            ; 1            ; 0              ; 0             ; 0             ; 1          ; 0           ;
+; state.SYNC_1   ; 0          ; 0          ; 1            ; 0            ; 0              ; 0             ; 0             ; 1          ; 0           ;
+; state.DATA     ; 0          ; 1          ; 0            ; 0            ; 0              ; 0             ; 0             ; 1          ; 0           ;
+; state.STOP     ; 1          ; 0          ; 0            ; 0            ; 0              ; 0             ; 0             ; 1          ; 0           ;
+; state.ERROR    ; 0          ; 0          ; 0            ; 0            ; 0              ; 0             ; 0             ; 1          ; 1           ;
++----------------+------------+------------+--------------+--------------+----------------+---------------+---------------+------------+-------------+
+
+
+Encoding Type:  One-Hot
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |uart_main2|sensor_controller:sensor_controller_0|state                                                                                                                      ;
++--------------------+-----------+--------------+--------------+------------------+------------------+-------------------+--------------------+--------------------+-------------+-------------+
+; Name               ; state.END ; state.BYTE_2 ; state.BYTE_1 ; state.START_DATA ; state.STORE_DATA ; state.WAIT_SENSOR ; state.WAIT_COMMAND ; state.WAIT_ADDRESS ; state.AWAKE ; state.SLEEP ;
++--------------------+-----------+--------------+--------------+------------------+------------------+-------------------+--------------------+--------------------+-------------+-------------+
+; state.SLEEP        ; 0         ; 0            ; 0            ; 0                ; 0                ; 0                 ; 0                  ; 0                  ; 0           ; 0           ;
+; state.AWAKE        ; 0         ; 0            ; 0            ; 0                ; 0                ; 0                 ; 0                  ; 0                  ; 1           ; 1           ;
+; state.WAIT_ADDRESS ; 0         ; 0            ; 0            ; 0                ; 0                ; 0                 ; 0                  ; 1                  ; 0           ; 1           ;
+; state.WAIT_COMMAND ; 0         ; 0            ; 0            ; 0                ; 0                ; 0                 ; 1                  ; 0                  ; 0           ; 1           ;
+; state.WAIT_SENSOR  ; 0         ; 0            ; 0            ; 0                ; 0                ; 1                 ; 0                  ; 0                  ; 0           ; 1           ;
+; state.STORE_DATA   ; 0         ; 0            ; 0            ; 0                ; 1                ; 0                 ; 0                  ; 0                  ; 0           ; 1           ;
+; state.START_DATA   ; 0         ; 0            ; 0            ; 1                ; 0                ; 0                 ; 0                  ; 0                  ; 0           ; 1           ;
+; state.BYTE_1       ; 0         ; 0            ; 1            ; 0                ; 0                ; 0                 ; 0                  ; 0                  ; 0           ; 1           ;
+; state.BYTE_2       ; 0         ; 1            ; 0            ; 0                ; 0                ; 0                 ; 0                  ; 0                  ; 0           ; 1           ;
+; state.END          ; 1         ; 0            ; 0            ; 0                ; 0                ; 0                 ; 0                  ; 0                  ; 0           ; 1           ;
++--------------------+-----------+--------------+--------------+------------------+------------------+-------------------+--------------------+--------------------+-------------+-------------+
+
+
+Encoding Type:  One-Hot
++-----------------------------------------------------------+
+; State Machine - |uart_main2|Uart8Receiver:rx|state        ;
++-----------+-----------+-----------+-----------+-----------+
+; Name      ; state.011 ; state.010 ; state.001 ; state.000 ;
++-----------+-----------+-----------+-----------+-----------+
+; state.000 ; 0         ; 0         ; 0         ; 0         ;
+; state.001 ; 0         ; 0         ; 1         ; 1         ;
+; state.010 ; 0         ; 1         ; 0         ; 1         ;
+; state.011 ; 1         ; 0         ; 0         ; 1         ;
++-----------+-----------+-----------+-----------+-----------+
+
+
++--------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                     ;
++----------------------------------------------------------+---------------------------------------------+
+; Register name                                            ; Reason for Removal                          ;
++----------------------------------------------------------+---------------------------------------------+
+; sensor_controller:sensor_controller_0|start_sensor       ; Stuck at GND due to stuck port data_in      ;
+; led[1]~reg0                                              ; Stuck at GND due to stuck port data_in      ;
+; Uart8Transmitter:comb_3|state.001                        ; Lost fanout                                 ;
+; uart_state~8                                             ; Lost fanout                                 ;
+; uart_state~9                                             ; Lost fanout                                 ;
+; uart_state~10                                            ; Lost fanout                                 ;
+; Uart8Transmitter:comb_3|state~7                          ; Lost fanout                                 ;
+; Uart8Transmitter:comb_3|state~8                          ; Lost fanout                                 ;
+; Uart8Transmitter:comb_3|state~9                          ; Lost fanout                                 ;
+; dht11:dht11_0|state~2                                    ; Lost fanout                                 ;
+; dht11:dht11_0|state~3                                    ; Lost fanout                                 ;
+; dht11:dht11_0|state~4                                    ; Lost fanout                                 ;
+; sensor_controller:sensor_controller_0|state~4            ; Lost fanout                                 ;
+; sensor_controller:sensor_controller_0|state~5            ; Lost fanout                                 ;
+; sensor_controller:sensor_controller_0|state~6            ; Lost fanout                                 ;
+; sensor_controller:sensor_controller_0|state~7            ; Lost fanout                                 ;
+; Uart8Receiver:rx|state~6                                 ; Lost fanout                                 ;
+; Uart8Receiver:rx|state~7                                 ; Lost fanout                                 ;
+; Uart8Receiver:rx|state~8                                 ; Lost fanout                                 ;
+; sensor_controller:sensor_controller_0|state.AWAKE        ; Stuck at GND due to stuck port data_in      ;
+; sensor_controller:sensor_controller_0|state.WAIT_ADDRESS ; Lost fanout                                 ;
+; sensor_controller:sensor_controller_0|state.WAIT_COMMAND ; Lost fanout                                 ;
+; uart_state.MEASURING                                     ; Stuck at GND due to stuck port data_in      ;
+; dht11:dht11_0|state.START_0                              ; Stuck at GND due to stuck port data_in      ;
+; sensor_controller:sensor_controller_0|state.WAIT_SENSOR  ; Stuck at GND due to stuck port data_in      ;
+; sensor_controller:sensor_controller_0|state.STORE_DATA   ; Stuck at GND due to stuck port data_in      ;
+; sensor_controller:sensor_controller_0|state.START_DATA   ; Stuck at GND due to stuck port data_in      ;
+; dht11:dht11_0|state.START_1                              ; Stuck at GND due to stuck port data_in      ;
+; sensor_controller:sensor_controller_0|state.BYTE_1       ; Stuck at GND due to stuck port data_in      ;
+; dht11:dht11_0|state.RESPONCE                             ; Stuck at GND due to stuck port data_in      ;
+; sensor_controller:sensor_controller_0|state.BYTE_2       ; Stuck at GND due to stuck port data_in      ;
+; sensor_controller:sensor_controller_0|state.END          ; Stuck at GND due to stuck port data_in      ;
+; dht11:dht11_0|state.SYNC_0                               ; Stuck at GND due to stuck port data_in      ;
+; sensor_controller:sensor_controller_0|counter[0..31]     ; Stuck at GND due to stuck port clock_enable ;
+; sensor_controller:sensor_controller_0|done               ; Stuck at GND due to stuck port data_in      ;
+; sensor_controller:sensor_controller_0|state.SLEEP        ; Stuck at GND due to stuck port data_in      ;
+; dht11:dht11_0|state.SYNC_1                               ; Stuck at GND due to stuck port data_in      ;
+; dht11:dht11_0|state.DATA                                 ; Stuck at GND due to stuck port data_in      ;
+; dht11:dht11_0|dht_out                                    ; Stuck at VCC due to stuck port data_in      ;
+; dht11:dht11_0|counter[0..31]                             ; Stuck at GND due to stuck port clock_enable ;
+; dht11:dht11_0|state.ERROR                                ; Stuck at GND due to stuck port data_in      ;
+; dht11:dht11_0|state.STOP                                 ; Stuck at GND due to stuck port data_in      ;
+; dht11:dht11_0|sensor_data[7,23]                          ; Stuck at GND due to stuck port clock_enable ;
+; dht11:dht11_0|counter_data[0..31]                        ; Stuck at GND due to stuck port clock_enable ;
+; dht11:dht11_0|state.IDLE                                 ; Stuck at GND due to stuck port data_in      ;
+; dht11:dht11_0|dir                                        ; Stuck at VCC due to stuck port data_in      ;
+; rxEn                                                     ; Stuck at VCC due to stuck port data_in      ;
+; command[0..7]                                            ; Lost fanout                                 ;
+; clock_divider:divider_0|counter[2..27]                   ; Lost fanout                                 ;
+; clock_divider1mhz:divider_1|counter[0..27]               ; Lost fanout                                 ;
+; Uart8Receiver:rx|out[0..7]                               ; Lost fanout                                 ;
+; clock_divider:divider_0|counter[0,1]                     ; Lost fanout                                 ;
+; Uart8Receiver:rx|receivedData[0..7]                      ; Lost fanout                                 ;
+; Total Number of Removed Registers = 221                  ;                                             ;
++----------------------------------------------------------+---------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                                                                                       ;
++---------------------------------------------------------+---------------------------+---------------------------------------------------------------------------------------------+
+; Register name                                           ; Reason for Removal        ; Registers Removed due to This Register                                                      ;
++---------------------------------------------------------+---------------------------+---------------------------------------------------------------------------------------------+
+; sensor_controller:sensor_controller_0|state.WAIT_SENSOR ; Stuck at GND              ; sensor_controller:sensor_controller_0|state.STORE_DATA,                                     ;
+;                                                         ; due to stuck port data_in ; sensor_controller:sensor_controller_0|state.START_DATA,                                     ;
+;                                                         ;                           ; sensor_controller:sensor_controller_0|state.BYTE_1,                                         ;
+;                                                         ;                           ; sensor_controller:sensor_controller_0|counter[0],                                           ;
+;                                                         ;                           ; sensor_controller:sensor_controller_0|counter[31],                                          ;
+;                                                         ;                           ; sensor_controller:sensor_controller_0|counter[30],                                          ;
+;                                                         ;                           ; sensor_controller:sensor_controller_0|counter[29],                                          ;
+;                                                         ;                           ; sensor_controller:sensor_controller_0|counter[28],                                          ;
+;                                                         ;                           ; sensor_controller:sensor_controller_0|counter[27],                                          ;
+;                                                         ;                           ; sensor_controller:sensor_controller_0|counter[26],                                          ;
+;                                                         ;                           ; sensor_controller:sensor_controller_0|counter[25],                                          ;
+;                                                         ;                           ; sensor_controller:sensor_controller_0|counter[24],                                          ;
+;                                                         ;                           ; sensor_controller:sensor_controller_0|counter[23],                                          ;
+;                                                         ;                           ; sensor_controller:sensor_controller_0|counter[22],                                          ;
+;                                                         ;                           ; sensor_controller:sensor_controller_0|counter[21],                                          ;
+;                                                         ;                           ; sensor_controller:sensor_controller_0|counter[20],                                          ;
+;                                                         ;                           ; sensor_controller:sensor_controller_0|counter[19],                                          ;
+;                                                         ;                           ; sensor_controller:sensor_controller_0|counter[18],                                          ;
+;                                                         ;                           ; sensor_controller:sensor_controller_0|counter[17],                                          ;
+;                                                         ;                           ; sensor_controller:sensor_controller_0|counter[16],                                          ;
+;                                                         ;                           ; sensor_controller:sensor_controller_0|counter[15],                                          ;
+;                                                         ;                           ; sensor_controller:sensor_controller_0|counter[14],                                          ;
+;                                                         ;                           ; sensor_controller:sensor_controller_0|counter[13],                                          ;
+;                                                         ;                           ; sensor_controller:sensor_controller_0|counter[12],                                          ;
+;                                                         ;                           ; sensor_controller:sensor_controller_0|counter[11],                                          ;
+;                                                         ;                           ; sensor_controller:sensor_controller_0|counter[10],                                          ;
+;                                                         ;                           ; sensor_controller:sensor_controller_0|counter[9],                                           ;
+;                                                         ;                           ; sensor_controller:sensor_controller_0|counter[8],                                           ;
+;                                                         ;                           ; sensor_controller:sensor_controller_0|counter[7],                                           ;
+;                                                         ;                           ; sensor_controller:sensor_controller_0|counter[6],                                           ;
+;                                                         ;                           ; sensor_controller:sensor_controller_0|counter[5],                                           ;
+;                                                         ;                           ; sensor_controller:sensor_controller_0|counter[4],                                           ;
+;                                                         ;                           ; sensor_controller:sensor_controller_0|counter[3],                                           ;
+;                                                         ;                           ; sensor_controller:sensor_controller_0|counter[2],                                           ;
+;                                                         ;                           ; sensor_controller:sensor_controller_0|counter[1]                                            ;
+; dht11:dht11_0|state.DATA                                ; Stuck at GND              ; dht11:dht11_0|state.STOP, dht11:dht11_0|sensor_data[7],                                     ;
+;                                                         ; due to stuck port data_in ; dht11:dht11_0|sensor_data[23], dht11:dht11_0|counter_data[31],                              ;
+;                                                         ;                           ; dht11:dht11_0|counter_data[30], dht11:dht11_0|counter_data[29],                             ;
+;                                                         ;                           ; dht11:dht11_0|counter_data[28], dht11:dht11_0|counter_data[27],                             ;
+;                                                         ;                           ; dht11:dht11_0|counter_data[26], dht11:dht11_0|counter_data[25],                             ;
+;                                                         ;                           ; dht11:dht11_0|counter_data[24], dht11:dht11_0|counter_data[23],                             ;
+;                                                         ;                           ; dht11:dht11_0|counter_data[22], dht11:dht11_0|counter_data[21],                             ;
+;                                                         ;                           ; dht11:dht11_0|counter_data[20], dht11:dht11_0|counter_data[19],                             ;
+;                                                         ;                           ; dht11:dht11_0|counter_data[18], dht11:dht11_0|counter_data[17],                             ;
+;                                                         ;                           ; dht11:dht11_0|counter_data[16], dht11:dht11_0|counter_data[15],                             ;
+;                                                         ;                           ; dht11:dht11_0|counter_data[14], dht11:dht11_0|counter_data[13],                             ;
+;                                                         ;                           ; dht11:dht11_0|counter_data[12], dht11:dht11_0|counter_data[11],                             ;
+;                                                         ;                           ; dht11:dht11_0|counter_data[10], dht11:dht11_0|counter_data[9],                              ;
+;                                                         ;                           ; dht11:dht11_0|counter_data[8], dht11:dht11_0|counter_data[7],                               ;
+;                                                         ;                           ; dht11:dht11_0|counter_data[6], dht11:dht11_0|counter_data[5],                               ;
+;                                                         ;                           ; dht11:dht11_0|counter_data[4], dht11:dht11_0|counter_data[3],                               ;
+;                                                         ;                           ; dht11:dht11_0|counter_data[2], dht11:dht11_0|counter_data[1],                               ;
+;                                                         ;                           ; dht11:dht11_0|counter_data[0]                                                               ;
+; dht11:dht11_0|state.START_0                             ; Stuck at GND              ; dht11:dht11_0|state.START_1, dht11:dht11_0|counter[29], dht11:dht11_0|counter[28],          ;
+;                                                         ; due to stuck port data_in ; dht11:dht11_0|counter[27], dht11:dht11_0|counter[26], dht11:dht11_0|counter[25],            ;
+;                                                         ;                           ; dht11:dht11_0|counter[24], dht11:dht11_0|counter[23], dht11:dht11_0|counter[22],            ;
+;                                                         ;                           ; dht11:dht11_0|counter[21], dht11:dht11_0|counter[19], dht11:dht11_0|counter[18],            ;
+;                                                         ;                           ; dht11:dht11_0|counter[17], dht11:dht11_0|counter[16], dht11:dht11_0|counter[15],            ;
+;                                                         ;                           ; dht11:dht11_0|counter[14], dht11:dht11_0|counter[13], dht11:dht11_0|counter[12],            ;
+;                                                         ;                           ; dht11:dht11_0|counter[11], dht11:dht11_0|counter[10], dht11:dht11_0|counter[9],             ;
+;                                                         ;                           ; dht11:dht11_0|counter[8], dht11:dht11_0|counter[7], dht11:dht11_0|counter[6],               ;
+;                                                         ;                           ; dht11:dht11_0|counter[5], dht11:dht11_0|counter[4], dht11:dht11_0|counter[3],               ;
+;                                                         ;                           ; dht11:dht11_0|counter[2], dht11:dht11_0|counter[0], dht11:dht11_0|counter[1],               ;
+;                                                         ;                           ; dht11:dht11_0|dir                                                                           ;
+; uart_state.MEASURING                                    ; Stuck at GND              ; rxEn, command[0], command[1], command[2], Uart8Receiver:rx|out[0], Uart8Receiver:rx|out[1], ;
+;                                                         ; due to stuck port data_in ; Uart8Receiver:rx|out[2], Uart8Receiver:rx|receivedData[0],                                  ;
+;                                                         ;                           ; Uart8Receiver:rx|receivedData[1], Uart8Receiver:rx|receivedData[2]                          ;
+; clock_divider1mhz:divider_1|counter[27]                 ; Lost Fanouts              ; clock_divider1mhz:divider_1|counter[26], clock_divider1mhz:divider_1|counter[25],           ;
+;                                                         ;                           ; clock_divider1mhz:divider_1|counter[24], clock_divider1mhz:divider_1|counter[23]            ;
+; clock_divider:divider_0|counter[27]                     ; Lost Fanouts              ; clock_divider:divider_0|counter[26], clock_divider:divider_0|counter[25],                   ;
+;                                                         ;                           ; clock_divider:divider_0|counter[24], clock_divider:divider_0|counter[23]                    ;
+; command[7]                                              ; Lost Fanouts              ; Uart8Receiver:rx|out[7], Uart8Receiver:rx|receivedData[7]                                   ;
+; command[6]                                              ; Lost Fanouts              ; Uart8Receiver:rx|out[6], Uart8Receiver:rx|receivedData[6]                                   ;
+; command[5]                                              ; Lost Fanouts              ; Uart8Receiver:rx|out[5], Uart8Receiver:rx|receivedData[5]                                   ;
+; command[4]                                              ; Lost Fanouts              ; Uart8Receiver:rx|out[4], Uart8Receiver:rx|receivedData[4]                                   ;
+; command[3]                                              ; Lost Fanouts              ; Uart8Receiver:rx|out[3], Uart8Receiver:rx|receivedData[3]                                   ;
+; dht11:dht11_0|state.SYNC_1                              ; Stuck at GND              ; dht11:dht11_0|counter[30]                                                                   ;
+;                                                         ; due to stuck port data_in ;                                                                                             ;
+; sensor_controller:sensor_controller_0|start_sensor      ; Stuck at GND              ; dht11:dht11_0|dht_out                                                                       ;
+;                                                         ; due to stuck port data_in ;                                                                                             ;
+; sensor_controller:sensor_controller_0|state.END         ; Stuck at GND              ; sensor_controller:sensor_controller_0|done                                                  ;
+;                                                         ; due to stuck port data_in ;                                                                                             ;
+; dht11:dht11_0|state.RESPONCE                            ; Stuck at GND              ; dht11:dht11_0|state.ERROR                                                                   ;
+;                                                         ; due to stuck port data_in ;                                                                                             ;
+; sensor_controller:sensor_controller_0|state~5           ; Lost Fanouts              ; sensor_controller:sensor_controller_0|state.WAIT_ADDRESS                                    ;
+; sensor_controller:sensor_controller_0|state~4           ; Lost Fanouts              ; sensor_controller:sensor_controller_0|state.WAIT_COMMAND                                    ;
+; led[1]~reg0                                             ; Stuck at GND              ; dht11:dht11_0|counter[20]                                                                   ;
+;                                                         ; due to stuck port data_in ;                                                                                             ;
++---------------------------------------------------------+---------------------------+---------------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 48    ;
+; Number of registers using Synchronous Clear  ; 12    ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 9     ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                              ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                    ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------+
+; 6:1                ; 8 bits    ; 32 LEs        ; 8 LEs                ; 24 LEs                 ; Yes        ; |uart_main2|Uart8Receiver:rx|out[4]                           ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 3 LEs                ; 9 LEs                  ; Yes        ; |uart_main2|Uart8Receiver:rx|bitIdx[2]                        ;
+; 5:1                ; 32 bits   ; 96 LEs        ; 32 LEs               ; 64 LEs                 ; Yes        ; |uart_main2|sensor_controller:sensor_controller_0|counter[18] ;
+; 9:1                ; 4 bits    ; 24 LEs        ; 4 LEs                ; 20 LEs                 ; Yes        ; |uart_main2|Uart8Receiver:rx|clockCount[3]                    ;
+; 15:1               ; 32 bits   ; 320 LEs       ; 32 LEs               ; 288 LEs                ; Yes        ; |uart_main2|dht11:dht11_0|counter[28]                         ;
+; 6:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; No         ; |uart_main2|Uart8Transmitter:comb_3|Selector17                ;
+; 9:1                ; 4 bits    ; 24 LEs        ; 12 LEs               ; 12 LEs                 ; No         ; |uart_main2|Selector16                                        ;
+; 10:1               ; 2 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; No         ; |uart_main2|Uart8Receiver:rx|Selector29                       ;
+; 10:1               ; 2 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; No         ; |uart_main2|Uart8Receiver:rx|Selector27                       ;
+; 11:1               ; 2 bits    ; 14 LEs        ; 6 LEs                ; 8 LEs                  ; No         ; |uart_main2|Selector18                                        ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------+
+
+
++----------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: clock_divider:divider_0 ;
++----------------+------------------------------+----------------------+
+; Parameter Name ; Value                        ; Type                 ;
++----------------+------------------------------+----------------------+
+; DIVISOR        ; 0000000000000001010001011000 ; Unsigned Binary      ;
++----------------+------------------------------+----------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: sensor_controller:sensor_controller_0 ;
++----------------+-------+-----------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                      ;
++----------------+-------+-----------------------------------------------------------+
+; SLEEP          ; 0     ; Signed Integer                                            ;
+; AWAKE          ; 1     ; Signed Integer                                            ;
+; WAIT_ADDRESS   ; 2     ; Signed Integer                                            ;
+; WAIT_COMMAND   ; 3     ; Signed Integer                                            ;
+; WAIT_SENSOR    ; 4     ; Signed Integer                                            ;
+; STORE_DATA     ; 5     ; Signed Integer                                            ;
+; START_DATA     ; 6     ; Signed Integer                                            ;
+; BYTE_1         ; 7     ; Signed Integer                                            ;
+; BYTE_2         ; 8     ; Signed Integer                                            ;
+; END            ; 9     ; Signed Integer                                            ;
++----------------+-------+-----------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: clock_divider1mhz:divider_1 ;
++----------------+------------------------------+--------------------------+
+; Parameter Name ; Value                        ; Type                     ;
++----------------+------------------------------+--------------------------+
+; DIVISOR        ; 0000000000000000000000110010 ; Unsigned Binary          ;
++----------------+------------------------------+--------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: dht11:dht11_0 ;
++----------------+-------+-----------------------------------+
+; Parameter Name ; Value ; Type                              ;
++----------------+-------+-----------------------------------+
+; IDLE           ; 0     ; Signed Integer                    ;
+; START_0        ; 1     ; Signed Integer                    ;
+; START_1        ; 2     ; Signed Integer                    ;
+; RESPONCE       ; 3     ; Signed Integer                    ;
+; SYNC_0         ; 4     ; Signed Integer                    ;
+; SYNC_1         ; 5     ; Signed Integer                    ;
+; DATA           ; 6     ; Signed Integer                    ;
+; STOP           ; 7     ; Signed Integer                    ;
+; ERROR          ; 8     ; Signed Integer                    ;
++----------------+-------+-----------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "Uart8Transmitter:comb_3"                                                            ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; busy ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "dht11:dht11_0"                                                                       ;
++-------+--------+----------+-------------------------------------------------------------------------------------+
+; Port  ; Type   ; Severity ; Details                                                                             ;
++-------+--------+----------+-------------------------------------------------------------------------------------+
+; error ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++-------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "sensor_controller:sensor_controller_0"                                                                                                                                                  ;
++-----------+--------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port      ; Type   ; Severity ; Details                                                                                                                                                                            ;
++-----------+--------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; start     ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                                                                                ;
+; data_out  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                                                                                ;
+; reset     ; Input  ; Warning  ; Input port expression (32 bits) is wider than the input port (1 bits) it drives.  The 31 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; reset[-1] ; Input  ; Info     ; Stuck at GND                                                                                                                                                                       ;
++-----------+--------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "Uart8Receiver:rx"                                                                   ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; err  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "baud_gen:baud_gen"                                                                                                                                                                   ;
++---------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port    ; Type  ; Severity ; Details                                                                                                                                                                            ;
++---------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; rst     ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (1 bits) it drives.  The 31 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; rst[-1] ; Input ; Info     ; Stuck at GND                                                                                                                                                                       ;
++---------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; boundary_port         ; 7                           ;
+; cycloneiii_ff         ; 48                          ;
+;     ENA               ; 9                           ;
+;     SCLR              ; 12                          ;
+;     plain             ; 27                          ;
+; cycloneiii_io_obuf    ; 1                           ;
+; cycloneiii_lcell_comb ; 99                          ;
+;     arith             ; 11                          ;
+;         2 data inputs ; 11                          ;
+;     normal            ; 88                          ;
+;         0 data inputs ; 1                           ;
+;         1 data inputs ; 3                           ;
+;         2 data inputs ; 12                          ;
+;         3 data inputs ; 18                          ;
+;         4 data inputs ; 54                          ;
+;                       ;                             ;
+; Max LUT depth         ; 5.00                        ;
+; Average LUT depth     ; 2.86                        ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:00     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
+    Info: Processing started: Wed May 25 15:13:59 2022
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off problema2 -c problema2
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 6 of the 6 processors detected
+Info (12021): Found 1 design units, including 1 entities, in source file baud_gen.v
+    Info (12023): Found entity 1: baud_gen File: /home/aluno/Documentos/TEC499/TP02/G02/p2/baud_gen.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file Uart8Transmitter.v
+    Info (12023): Found entity 1: Uart8Transmitter File: /home/aluno/Documentos/TEC499/TP02/G02/p2/Uart8Transmitter.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file Uart8Receiver.v
+    Info (12023): Found entity 1: Uart8Receiver File: /home/aluno/Documentos/TEC499/TP02/G02/p2/Uart8Receiver.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file uart_main2.v
+    Info (12023): Found entity 1: uart_main2 File: /home/aluno/Documentos/TEC499/TP02/G02/p2/uart_main2.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file uart_rx.v
+    Info (12023): Found entity 1: uart_rx File: /home/aluno/Documentos/TEC499/TP02/G02/p2/uart_rx.v Line: 1
+Info (12021): Found 2 design units, including 2 entities, in source file dht11.v
+    Info (12023): Found entity 1: dht11 File: /home/aluno/Documentos/TEC499/TP02/G02/p2/dht11.v Line: 1
+    Info (12023): Found entity 2: tris File: /home/aluno/Documentos/TEC499/TP02/G02/p2/dht11.v Line: 190
+Info (12021): Found 1 design units, including 1 entities, in source file sensor_controller.v
+    Info (12023): Found entity 1: sensor_controller File: /home/aluno/Documentos/TEC499/TP02/G02/p2/sensor_controller.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file clock_divider.v
+    Info (12023): Found entity 1: clock_divider File: /home/aluno/Documentos/TEC499/TP02/G02/p2/clock_divider.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file clock_divider1mhz.v
+    Info (12023): Found entity 1: clock_divider1mhz File: /home/aluno/Documentos/TEC499/TP02/G02/p2/clock_divider1mhz.v Line: 1
+Critical Warning (10846): Verilog HDL Instantiation warning at uart_main2.v(103): instance has no name File: /home/aluno/Documentos/TEC499/TP02/G02/p2/uart_main2.v Line: 103
+Warning (10222): Verilog HDL Parameter Declaration warning at uart_rx.v(12): Parameter Declaration in module "uart_rx" behaves as a Local Parameter Declaration because the module has a Module Parameter Port List File: /home/aluno/Documentos/TEC499/TP02/G02/p2/uart_rx.v Line: 12
+Warning (10222): Verilog HDL Parameter Declaration warning at uart_rx.v(13): Parameter Declaration in module "uart_rx" behaves as a Local Parameter Declaration because the module has a Module Parameter Port List File: /home/aluno/Documentos/TEC499/TP02/G02/p2/uart_rx.v Line: 13
+Warning (10222): Verilog HDL Parameter Declaration warning at uart_rx.v(14): Parameter Declaration in module "uart_rx" behaves as a Local Parameter Declaration because the module has a Module Parameter Port List File: /home/aluno/Documentos/TEC499/TP02/G02/p2/uart_rx.v Line: 14
+Warning (10222): Verilog HDL Parameter Declaration warning at uart_rx.v(15): Parameter Declaration in module "uart_rx" behaves as a Local Parameter Declaration because the module has a Module Parameter Port List File: /home/aluno/Documentos/TEC499/TP02/G02/p2/uart_rx.v Line: 15
+Warning (10222): Verilog HDL Parameter Declaration warning at uart_rx.v(16): Parameter Declaration in module "uart_rx" behaves as a Local Parameter Declaration because the module has a Module Parameter Port List File: /home/aluno/Documentos/TEC499/TP02/G02/p2/uart_rx.v Line: 16
+Info (12127): Elaborating entity "uart_main2" for the top level hierarchy
+Warning (10036): Verilog HDL or VHDL warning at uart_main2.v(35): object "dhtEn" assigned a value but never read File: /home/aluno/Documentos/TEC499/TP02/G02/p2/uart_main2.v Line: 35
+Info (12128): Elaborating entity "baud_gen" for hierarchy "baud_gen:baud_gen" File: /home/aluno/Documentos/TEC499/TP02/G02/p2/uart_main2.v Line: 13
+Info (12128): Elaborating entity "Uart8Receiver" for hierarchy "Uart8Receiver:rx" File: /home/aluno/Documentos/TEC499/TP02/G02/p2/uart_main2.v Line: 30
+Warning (10230): Verilog HDL assignment warning at Uart8Receiver.v(96): truncated value with size 32 to match size of target (4) File: /home/aluno/Documentos/TEC499/TP02/G02/p2/Uart8Receiver.v Line: 96
+Info (12128): Elaborating entity "clock_divider" for hierarchy "clock_divider:divider_0" File: /home/aluno/Documentos/TEC499/TP02/G02/p2/uart_main2.v Line: 53
+Info (12128): Elaborating entity "sensor_controller" for hierarchy "sensor_controller:sensor_controller_0" File: /home/aluno/Documentos/TEC499/TP02/G02/p2/uart_main2.v Line: 67
+Warning (10036): Verilog HDL or VHDL warning at sensor_controller.v(15): object "humidity" assigned a value but never read File: /home/aluno/Documentos/TEC499/TP02/G02/p2/sensor_controller.v Line: 15
+Warning (10036): Verilog HDL or VHDL warning at sensor_controller.v(34): object "address" assigned a value but never read File: /home/aluno/Documentos/TEC499/TP02/G02/p2/sensor_controller.v Line: 34
+Warning (10036): Verilog HDL or VHDL warning at sensor_controller.v(35): object "command" assigned a value but never read File: /home/aluno/Documentos/TEC499/TP02/G02/p2/sensor_controller.v Line: 35
+Info (12128): Elaborating entity "clock_divider1mhz" for hierarchy "clock_divider1mhz:divider_1" File: /home/aluno/Documentos/TEC499/TP02/G02/p2/uart_main2.v Line: 75
+Info (12128): Elaborating entity "dht11" for hierarchy "dht11:dht11_0" File: /home/aluno/Documentos/TEC499/TP02/G02/p2/uart_main2.v Line: 85
+Info (12128): Elaborating entity "tris" for hierarchy "dht11:dht11_0|tris:tris_0" File: /home/aluno/Documentos/TEC499/TP02/G02/p2/dht11.v Line: 33
+Info (12128): Elaborating entity "Uart8Transmitter" for hierarchy "Uart8Transmitter:comb_3" File: /home/aluno/Documentos/TEC499/TP02/G02/p2/uart_main2.v Line: 103
+Warning (10036): Verilog HDL or VHDL warning at Uart8Transmitter.v(9): object "RESET" assigned a value but never read File: /home/aluno/Documentos/TEC499/TP02/G02/p2/Uart8Transmitter.v Line: 9
+Warning (12241): 2 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Warning (13009): TRI or OPNDRN buffers permanently enabled
+    Warning (13010): Node "dht11:dht11_0|tris:tris_0|port~synth" File: /home/aluno/Documentos/TEC499/TP02/G02/p2/dht11.v Line: 196
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "led[1]" is stuck at GND File: /home/aluno/Documentos/TEC499/TP02/G02/p2/uart_main2.v Line: 111
+Info (286030): Timing-Driven Synthesis is running
+Info (17049): 99 registers lost all their fanouts during netlist optimizations.
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Info (21057): Implemented 110 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 2 input pins
+    Info (21059): Implemented 4 output pins
+    Info (21060): Implemented 1 bidirectional pins
+    Info (21061): Implemented 103 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 18 warnings
+    Info: Peak virtual memory: 429 megabytes
+    Info: Processing ended: Wed May 25 15:14:05 2022
+    Info: Elapsed time: 00:00:06
+    Info: Total CPU time (on all processors): 00:00:12
+
+

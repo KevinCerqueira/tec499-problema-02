@@ -1,0 +1,127 @@
+m255
+K4
+z2
+!s11f vlog 2020.1 2020.02, Feb 28 2020
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 d/home/aluno/Documentos/TEC499/TP02/G02/p2/simulation/qsim
+vhard_block
+Z1 !s110 1653500838
+!i10b 1
+!s100 @o=IlDQXN9^TcWHgLDcT03
+Z2 !s11b Dg1SIo80bB@j0V0VzS_@n1
+IBf0>iHM;Ok92HXhSboNnF1
+Z3 VDg1SIo80bB@j0V0VzS_@n1
+R0
+Z4 w1653500837
+Z5 8problema2.vo
+Z6 Fproblema2.vo
+!i122 48
+L0 2177 34
+Z7 OV;L;2020.1;71
+r1
+!s85 0
+31
+Z8 !s108 1653500837.000000
+Z9 !s107 problema2.vo|
+Z10 !s90 -work|work|problema2.vo|
+!i113 1
+Z11 o-work work
+Z12 tCvgOpt 0
+vUart8Receiver
+Z13 !s110 1653498252
+!i10b 1
+!s100 M1PzRE0c8mlD5YkQSNJgS2
+R2
+I_07I_[3:<<laO;5oN[A>X0
+R3
+R0
+w1653498252
+R5
+R6
+!i122 4
+L0 32 2485
+R7
+r1
+!s85 0
+31
+Z14 !s108 1653498252.000000
+R9
+R10
+!i113 1
+R11
+R12
+n@uart8@receiver
+vUart8Receiver_vlg_vec_tst
+R13
+!i10b 1
+!s100 IXLLLHz;S[RJA0Kf7o>QK2
+R2
+IZVGnOU=OG3LmYe_;A:ERd3
+R3
+R0
+w1653498251
+8rx_test1.vwf.vt
+Frx_test1.vwf.vt
+!i122 5
+L0 30 50
+R7
+r1
+!s85 0
+31
+R14
+!s107 rx_test1.vwf.vt|
+!s90 -work|work|rx_test1.vwf.vt|
+!i113 1
+R11
+R12
+n@uart8@receiver_vlg_vec_tst
+vuart_rx
+R1
+!i10b 1
+!s100 F]l7;5@QgmU>L6[W_<9OL1
+R2
+IjV5f1]B=C?@9e<b7O3Ng`1
+R3
+R0
+R4
+R5
+R6
+!i122 48
+L0 32 2144
+R7
+r1
+!s85 0
+31
+R8
+R9
+R10
+!i113 1
+R11
+R12
+vuart_rx_vlg_vec_tst
+R1
+!i10b 1
+!s100 =M=38FE3ZFW1OB>K35Ene0
+R2
+IZHo3FRHKGN?ZcJJH;ec@W1
+R3
+R0
+w1653500836
+8rx_test2.vwf.vt
+Frx_test2.vwf.vt
+!i122 49
+L0 30 53
+R7
+r1
+!s85 0
+31
+!s108 1653500838.000000
+!s107 rx_test2.vwf.vt|
+!s90 -work|work|rx_test2.vwf.vt|
+!i113 1
+R11
+R12

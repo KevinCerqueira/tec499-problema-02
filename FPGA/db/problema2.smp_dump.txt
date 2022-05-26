@@ -1,0 +1,49 @@
+
+State Machine - |uart_main2|uart_state
+Name uart_state.RESET uart_state.TRANSMITTING_P2 uart_state.TRANSMITTING_P1 uart_state.MEASURING uart_state.RECEIVING uart_state.IDLE 
+uart_state.IDLE 0 0 0 0 0 0 
+uart_state.RECEIVING 0 0 0 0 1 1 
+uart_state.MEASURING 0 0 0 1 0 1 
+uart_state.TRANSMITTING_P1 0 0 1 0 0 1 
+uart_state.TRANSMITTING_P2 0 1 0 0 0 1 
+uart_state.RESET 1 0 0 0 0 1 
+
+State Machine - |uart_main2|Uart8Transmitter:comb_3|state
+Name state.101 state.100 state.011 state.010 state.001 
+state.001 0 0 0 0 0 
+state.010 0 0 0 1 1 
+state.011 0 0 1 0 1 
+state.100 0 1 0 0 1 
+state.101 1 0 0 0 1 
+
+State Machine - |uart_main2|dht11:dht11_0|state
+Name state.STOP state.DATA state.SYNC_1 state.SYNC_0 state.RESPONCE state.START_1 state.START_0 state.IDLE state.ERROR 
+state.IDLE 0 0 0 0 0 0 0 0 0 
+state.START_0 0 0 0 0 0 0 1 1 0 
+state.START_1 0 0 0 0 0 1 0 1 0 
+state.RESPONCE 0 0 0 0 1 0 0 1 0 
+state.SYNC_0 0 0 0 1 0 0 0 1 0 
+state.SYNC_1 0 0 1 0 0 0 0 1 0 
+state.DATA 0 1 0 0 0 0 0 1 0 
+state.STOP 1 0 0 0 0 0 0 1 0 
+state.ERROR 0 0 0 0 0 0 0 1 1 
+
+State Machine - |uart_main2|sensor_controller:sensor_controller_0|state
+Name state.END state.BYTE_2 state.BYTE_1 state.START_DATA state.STORE_DATA state.WAIT_SENSOR state.WAIT_COMMAND state.WAIT_ADDRESS state.AWAKE state.SLEEP 
+state.SLEEP 0 0 0 0 0 0 0 0 0 0 
+state.AWAKE 0 0 0 0 0 0 0 0 1 1 
+state.WAIT_ADDRESS 0 0 0 0 0 0 0 1 0 1 
+state.WAIT_COMMAND 0 0 0 0 0 0 1 0 0 1 
+state.WAIT_SENSOR 0 0 0 0 0 1 0 0 0 1 
+state.STORE_DATA 0 0 0 0 1 0 0 0 0 1 
+state.START_DATA 0 0 0 1 0 0 0 0 0 1 
+state.BYTE_1 0 0 1 0 0 0 0 0 0 1 
+state.BYTE_2 0 1 0 0 0 0 0 0 0 1 
+state.END 1 0 0 0 0 0 0 0 0 1 
+
+State Machine - |uart_main2|Uart8Receiver:rx|state
+Name state.011 state.010 state.001 state.000 
+state.000 0 0 0 0 
+state.001 0 0 1 1 
+state.010 0 1 0 1 
+state.011 1 0 0 1 
